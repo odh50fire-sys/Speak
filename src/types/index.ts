@@ -2,6 +2,8 @@ export type DifficultyLevel = 1 | 2 | 3 | 4 | 5;
 
 export type ThemeId = 'cheese' | 'strawberry' | 'soda' | 'mint' | 'lavender';
 
+export type ScreenMode = 'lobby' | 'chat' | 'review';
+
 export interface Persona {
   id: string;
   name: string;
