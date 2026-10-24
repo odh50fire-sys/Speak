@@ -21,7 +21,7 @@ export interface Situation {
   id: string;
   title: string;
   emoji: string;
-  category: 'daily' | 'cafe' | 'travel' | 'friend';
+  category: 'daily' | 'cafe' | 'travel' | 'friend' | 'work' | 'service';
   description: string;
   firstTurnPrompt: string;
   suggestedLevel: DifficultyLevel;
