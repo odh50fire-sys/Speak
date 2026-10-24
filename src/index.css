@@ -1,0 +1,165 @@
+@import "tailwindcss";
+
+@layer base {
+  :root {
+    --bg-main: #FFF8E7; /* 웜 크림/치즈 */
+    --card-bg: #FFFFFF;
+    --accent: #FF6B8B;  /* 딸기 핑크 */
+    --accent-hover: #FA5252;
+    --bubble-ai: #FFF3BF;
+    --bubble-user: #D0EBFF;
+    --border-main: #1E1E1E;
+    --shadow-color: #1E1E1E;
+  }
+
+  /* 테마 1: 딸기 팝 (Strawberry Pop) */
+  [data-theme="strawberry"] {
+    --bg-main: #FFE3E8;
+    --card-bg: #FFFFFF;
+    --accent: #FF5376;
+    --accent-hover: #E63956;
+    --bubble-ai: #FFF0F3;
+    --bubble-user: #D3F9D8;
+    --border-main: #2B1810;
+    --shadow-color: #2B1810;
+  }
+
+  /* 테마 2: 치즈 툰 (Cheese Toon) */
+  [data-theme="cheese"] {
+    --bg-main: #FFF3BF;
+    --card-bg: #FFFFFF;
+    --accent: #FFA94D;
+    --accent-hover: #F76707;
+    --bubble-ai: #FFE8CC;
+    --bubble-user: #D0EBFF;
+    --border-main: #212529;
+    --shadow-color: #212529;
+  }
+
+  /* 테마 3: 소다 스카이 (Soda Sky) */
+  [data-theme="soda"] {
+    --bg-main: #E7F5FF;
+    --card-bg: #FFFFFF;
+    --accent: #4DABF7;
+    --accent-hover: #228BE6;
+    --bubble-ai: #EDF2FF;
+    --bubble-user: #FFE8CC;
+    --border-main: #182C40;
+    --shadow-color: #182C40;
+  }
+
+  /* 테마 4: 민트 클로버 (Mint Clover) */
+  [data-theme="mint"] {
+    --bg-main: #E6FCF5;
+    --card-bg: #FFFFFF;
+    --accent: #38D9A9;
+    --accent-hover: #12B886;
+    --bubble-ai: #F4FCE3;
+    --bubble-user: #E7F5FF;
+    --border-main: #143026;
+    --shadow-color: #143026;
+  }
+
+  /* 테마 5: 라벤더 드림 (Lavender Dream) */
+  [data-theme="lavender"] {
+    --bg-main: #F3F0FF;
+    --card-bg: #FFFFFF;
+    --accent: #B197FC;
+    --accent-hover: #9775FA;
+    --bubble-ai: #FFF0F6;
+    --bubble-user: #E7F5FF;
+    --border-main: #241A3E;
+    --shadow-color: #241A3E;
+  }
+
+  body {
+    background-color: var(--bg-main);
+    color: var(--border-main);
+    font-family: 'Fredoka', 'Jua', 'Noto Sans KR', sans-serif;
+    transition: background-color 0.3s ease;
+  }
+}
+
+/* 만화풍 네오브루탈리즘 클래스 */
+.comic-border {
+  border: 3px solid var(--border-main);
+}
+
+.comic-border-thick {
+  border: 4px solid var(--border-main);
+}
+
+.comic-shadow {
+  box-shadow: 4px 4px 0px var(--shadow-color);
+}
+
+.comic-shadow-sm {
+  box-shadow: 2px 2px 0px var(--shadow-color);
+}
+
+.comic-shadow-lg {
+  box-shadow: 6px 6px 0px var(--shadow-color);
+}
+
+.comic-btn {
+  border: 3px solid var(--border-main);
+  box-shadow: 4px 4px 0px var(--shadow-color);
+  transition: all 0.12s ease;
+}
+
+.comic-btn:hover {
+  transform: translate(-2px, -2px);
+  box-shadow: 6px 6px 0px var(--shadow-color);
+}
+
+.comic-btn:active {
+  transform: translate(2px, 2px);
+  box-shadow: 1px 1px 0px var(--shadow-color);
+}
+
+/* 말풍선 꼬리 */
+.bubble-ai-tail::after {
+  content: '';
+  position: absolute;
+  left: -12px;
+  top: 16px;
+  width: 0;
+  height: 0;
+  border-top: 10px solid transparent;
+  border-bottom: 10px solid transparent;
+  border-right: 12px solid var(--bubble-ai);
+  filter: drop-shadow(-3px 0px 0px var(--border-main));
+}
+
+.bubble-user-tail::after {
+  content: '';
+  position: absolute;
+  right: -12px;
+  top: 16px;
+  width: 0;
+  height: 0;
+  border-top: 10px solid transparent;
+  border-bottom: 10px solid transparent;
+  border-left: 12px solid var(--bubble-user);
+  filter: drop-shadow(3px 0px 0px var(--border-main));
+}
+
+/* 바운스 펄스 애니메이션 */
+@keyframes comic-float {
+  0%, 100% { transform: translateY(0px) rotate(0deg); }
+  50% { transform: translateY(-5px) rotate(1deg); }
+}
+
+.comic-float {
+  animation: comic-float 3s ease-in-out infinite;
+}
+
+@keyframes comic-mic-pulse {
+  0% { transform: scale(1); }
+  50% { transform: scale(1.08); box-shadow: 6px 6px 0px var(--shadow-color); }
+  100% { transform: scale(1); }
+}
+
+.mic-recording {
+  animation: comic-mic-pulse 1.2s ease-in-out infinite;
+}
