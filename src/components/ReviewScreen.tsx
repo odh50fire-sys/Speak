@@ -37,18 +37,28 @@ export const ReviewScreen: React.FC<ReviewScreenProps> = ({
 
   return (
     <div className="flex flex-col h-full max-w-xl mx-auto w-full justify-between gap-3 p-1">
-      {/* 1. 상단 인디케이터 바 */}
-      <div className="bg-white rounded-2xl comic-border-thick comic-shadow-sm px-4 py-2.5 flex items-center justify-between">
+      {/* 1. 상단 인디케이터 바: [홈으로] 버튼 상시 노출 */}
+      <div className="bg-white rounded-2xl comic-border-thick comic-shadow-sm px-3.5 py-2 flex items-center justify-between gap-2 shrink-0">
         <div className="flex items-center gap-2">
-          <span className="text-xl">🎉</span>
+          <button
+            onClick={onGoHome}
+            className="comic-btn bg-amber-100 hover:bg-amber-200 text-amber-950 font-bold px-2.5 py-1.5 rounded-xl text-xs flex items-center gap-1 shadow-xs"
+            title="시작 화면(홈)으로 이동"
+          >
+            <Home className="w-3.5 h-3.5" />
+            <span>홈으로</span>
+          </button>
+
           <div>
-            <h2 className="font-bold text-sm text-gray-900 leading-tight">대화 복기 리포트</h2>
-            <p className="text-[10px] text-gray-500">{persona.name} • {situation.title}</p>
+            <h2 className="font-bold text-xs sm:text-sm text-gray-900 leading-tight flex items-center gap-1">
+              <span>🎉 대화 복기</span>
+            </h2>
+            <p className="text-[10px] text-gray-500 line-clamp-1">{persona.name} • {situation.title}</p>
           </div>
         </div>
 
         {/* 3단계 스텝 배지 */}
-        <div className="flex items-center gap-1.5 bg-gray-100 p-1 rounded-xl comic-border">
+        <div className="flex items-center gap-1 bg-gray-100 p-1 rounded-xl comic-border">
           {[1, 2, 3].map(step => (
             <button
               key={step}
@@ -62,7 +72,7 @@ export const ReviewScreen: React.FC<ReviewScreenProps> = ({
               {step}
             </button>
           ))}
-          <span className="text-[10px] text-gray-400 font-bold px-1">/ 3</span>
+          <span className="text-[10px] text-gray-400 font-bold px-0.5">/3</span>
         </div>
       </div>
 
